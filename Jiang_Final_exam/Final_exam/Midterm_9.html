@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Midterm_9</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        table,tr,td {
+            border-collapse: collapse;
+            border:1px solid black;
+            padding:2px
+        }
+    </style>
+
+</head>
+
+<body>
+    <table id="chicagoTable"></table>
+
+
+    <script>
+
+
+            var Attractions = {
+"type": "FeatureCollection",
+"name": "attractions",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Grant Park", "type": "Park", "city": "Chicago" }, "geometry": { "type": "Point", "coordinates": [ -87.618961, 41.875782 ] } },
+{ "type": "Feature", "properties": { "name": "The Art Institute of Chicago", "type": "Museum", "city": "Chicago" }, "geometry": { "type": "Point", "coordinates": [ -87.6237, 41.8796 ]  } },
+{ "type": "Feature", "properties": { "name": "Millennium Park", "type": "Park", "city": "Chicago" }, "geometry": { "type": "Point", "coordinates": [  -87.622513, 41.882570 ] } },
+{ "type": "Feature", "properties": { "name": "Lake Shore East Park", "type": "Park", "city": "Chicago" }, "geometry": { "type": "Point", "coordinates": [ -87.617680, 41.885971 ] } },
+{ "type": "Feature", "properties": { "name": "Navy Pier", "type": "Park", "city": "Chicago" }, "geometry": { "type": "Point", "coordinates": [ -87.611356, 41.890100 ] } },
+{ "type": "Feature", "properties": { "name": "Field Museum", "type": "Museum", "city": "Chicago" }, "geometry": { "type": "Point", "coordinates": [ -87.616903, 41.866181 ] } },
+{ "type": "Feature", "properties": { "name": "Redondo Beach", "type": "Beach", "city": "Los Angeles" }, "geometry": { "type": "Point", "coordinates": [ -118.394204, 33.845212 ] } },
+{ "type": "Feature", "properties": { "name": "Universal City", "type": "Amusement Park", "city": "Los Angeles" }, "geometry": { "type": "Point", "coordinates": [ -118.351740, 34.138165 ] } }
+]};
+
+    var table = document.getElementById("chicagoTable");
+
+    var header = table.createTHead();
+    var firstRow = header.insertRow(0);
+    firstRow.insertCell(0).innerHTML = '<b>name</b>';
+    firstRow.insertCell(1).innerHTML = '<b>type</b>';
+    firstRow.insertCell(2).innerHTML = '<b>city</b>';
+    firstRow.insertCell(3).innerHTML = '<b>latitude</b>';
+    firstRow.insertCell(4).innerHTML = '<b>longtitude</b>';
+
+    for(var i = 0; i < Attractions.features.length;i++){
+        var properties = Attractions.features[i].properties;
+        var row = table.insertRow(-1);
+        row.insertCell(0).innerHTML = properties.name;
+        row.insertCell(1).innerHTML = properties.type;
+        row.insertCell(2).innerHTML = properties.city;
+        row.insertCell(3).innerHTML = Attractions.features[i].geometry.coordinates[0];
+        row.insertCell(4).innerHTML = Attractions.features[i].geometry.coordinates[1];
+    }
+
+    </script>
+
+
+
+</body>
+
+</html>
